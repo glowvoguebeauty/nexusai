@@ -36,4 +36,4 @@ logs/
 *.log
 
 # Local development
-*.local
+*.localnode_modules/.cache/
