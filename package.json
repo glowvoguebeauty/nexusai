@@ -13,6 +13,7 @@
   "start": "react-scripts start",
   "build": "react-scripts build",
   "test": "react-scripts test",
+  "postinstall": "chmod +x node_modules/.bin/react-scripts || true",
   "eject": "react-scripts eject"
 },
   "browserslist": {
