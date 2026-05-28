@@ -37,3 +37,4 @@ logs/
 
 # Local development
 *.localnode_modules/.cache/
+node_modules/
