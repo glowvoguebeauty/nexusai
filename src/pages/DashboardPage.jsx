@@ -135,12 +135,17 @@ const AgentChatModal = ({ agent, onClose, isDark, user, onToggleTheme }) => {
   setLoading(true);
 
   try {
-    // 1. Call AI endpoint
-    const response = await fetch('http://localhost:5001/api/chat/ai', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ messages: apiMessages }),
-    });
+    // Determine API URL based on environment
+const isDevelopment = process.env.NODE_ENV === 'development';
+const API_BASE = isDevelopment 
+  ? 'http://localhost:8888/.netlify/functions'   // local testing with netlify dev
+  : '/.netlify/functions';                       // production mein relative path
+
+const response = await fetch(`${API_BASE}/chat-ai`, {
+  method: 'POST',
+  headers: { 'Content-Type': 'application/json' },
+  body: JSON.stringify({ messages: updatedMessages }),
+});
 
     const data = await response.json();
     const aiReply = data.reply;          // ✅ Declare and assign
